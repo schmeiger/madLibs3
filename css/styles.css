@@ -1,0 +1,78 @@
+html, body {
+	color: #000;
+	margin: 0;
+	padding: 0;
+
+	font-family: 'Open Sans', sans-serif;
+}
+
+img {
+	max-width: 100%;
+}
+
+.wrapper {
+	width: 100%;
+	max-width: 1400px;
+	padding: 20px;
+	margin: 0 auto;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+header, .flexi {
+	 display: -webkit-box;   
+	 display: -moz-box;        
+	 display: -ms-flexbox;      
+	 display: -webkit-flex;     
+	 display: flex;
+
+	 -webkit-align-content: space-between; 
+	 -webkit-align-content: space-between; 
+	 align-content: space-between;
+
+	 -webkit-flex-align: center;
+	  -ms-flex-align: center;
+	  -webkit-align-items: center;
+	  align-items: center;
+}
+
+.flexi-row {
+	width: 32%;
+	font-size: 18px;
+}
+
+.flexi-row input[type="text"], .flexi-row input[type="number"]{
+	width: 90%;
+	margin-bottom: 10px;
+	font-size: 20px;
+}
+
+.flexi-row span, .flexi-row input {
+	display: inline-block;
+}
+
+section {
+	margin-top: 50px;
+}
+
+.inputs {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.text {
+	font-size: 24px;
+}
+
+.smiley {
+	width: 25%;
+}
+
+.logo {
+	width: 70%;
+	text-align: center;
+}

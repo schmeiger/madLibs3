@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html ng-app="madLibs">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name=“viewport” content=“width=device-width, initial-scale=1.0, maximum-scale=1.0”>	
+	<meta name="format-detection" content="telephone=no">
+	
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	
+	<title>MadLibs</title>
+
+	<link rel="shortcut icon" href="">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body ng-controller="madLibsCtrl">
+	<div class="wrapper">
+		<header>
+			<div class="smiley">
+				<img src="img/smiley.png" alt="">
+			</div>
+			<div class="logo">
+				<img src="img/logo.png" alt="">
+			</div>
+		</header>
+
+		<section class="inputs" ng-hide="filled">
+			<h2>Provide the following words: (all items shall be filled in)</h2>
+			<form name="madLibsForm" novalidate ng-submit="submitMadLibsForm()">
+				<div class="flexi">
+					<div class="flexi-row">
+						<label for="gender">Your gender?</label>
+						<p><span>Male</span><input type="radio" name="gender" value="male" ng-change="genderChange()" checked ng-model="gender" /></p>
+						<p><span>Female</span><input type="radio" name="gender" value="female" ng-change="genderChange()" ng-model="gender"/></p>
+					</div>
+					<div class="flexi-row">
+						<input type="text" ng-model="form.playerName" name="playerName" required ng-minlength="3" placeholder="Your Name"><br/>
+						<input type="text" ng-model="form.jobTitle" name="jobTitle" required ng-minlength="3" placeholder="Job Title"><br/>
+						<input type="text" ng-model="form.dirtyTask" name="dirtyTask" required ng-minlength="3" placeholder="Dirty Task">
+					</div>
+					<div class="flexi-row">
+						<input type="text" ng-model="form.tediousTask" name="tediousTask" required ng-minlength="3" placeholder="Tedious Task"><br/>
+						<input type="text" ng-model="form.celebrity" name="celebrity" required ng-minlength="3" placeholder="Celebrity"><br/>
+						<input type="text" ng-model="form.uselessSkill" name="uselessSkill" required ng-minlength="3" placeholder="useless Skill">
+					</div>
+					<div class="flexi-row">
+						<input type="text" ng-model="form.adjective" name="adjective" required ng-minlength="3" placeholder="adjective"><br/>
+						<input type="number" ng-model="form.hugeNumber" name="hugeNumber" required ng-minlength="3" ng-pattern="/[0-9]{3,}/" placeholder="huge Number"><br/>
+						<input type="text" ng-model="form.obnoxiuousCelbertity" name="obnoxiuousCelbertity" required ng-minlength="5" placeholder="obnoxious Celebrity">
+					</div>
+				</div>
+				
+				<p>
+					<input type="submit" name="submit-madLibs" value="Play!">
+				</p>
+
+
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.playerName.$error.required">You didn't enter your name</p>
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.playerName.$error.minlength">Your name is too short</p>
+				
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.jobTitle.$error.required">You didn't enter your job title</p>
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.jobTitle.$error.minlength">Your job title is too short</p>
+
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.dirtyTask.$error.required">You didn't enter your dirty task</p>
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.dirtyTask.$error.minlength">Your dirty task is too short</p>
+
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.tediousTask.$error.required">You didn't enter your tedious task</p>
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.tediousTask.$error.minlength">Your tedious task is too short</p>
+
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.celebrity.$error.required">You didn't enter your celebrity</p>
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.celebrity.$error.minlength">Your celebrity is too short</p>
+
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.uselessSkill.$error.required">You didn't enter your useless skill</p>
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.uselessSkill.$error.minlength">Your useless skill is too short</p>
+
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.adjective.$error.required">You didn't enter your adjective</p>
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.adjective.$error.minlength">Your adjective is too short</p>
+
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.hugeNumber.$error.required">You didn't enter your huge number</p>
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.hugeNumber.$error.minlength">Your huge number is too short</p>
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.hugeNumber.$error.pattern">You have to use only numeric characters</p>
+
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.obnoxiuousCelbertity.$error.required">You didn't enter your obnoxious celebrity</p>
+				<p class="error" ng-if="madLibsForm.$submitted && madLibsForm.obnoxiuousCelbertity.$error.minlength">Your obnoxious celebrity is too short</p>
+
+			</form>
+
+		</section>
+
+		<section class="text" ng-show="filled">
+			<p>
+				{{form.playerName}} was a {{form.jobTitle}} who loved technology. Although {{pronoun}} loved parts of {{pronounPossessive}} job, {{pronoun}} absolutely hated {{form.tediousTask}} and {{form.dirtyTask}}. So, {{form.playerName}} met with {{pronounPossessive}} life mentor {{form.celebrity}} who told {{pronounPossessive}} to learn how to {{form.uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{form.uselessSkill}} so {{pronoun}} studied programming instead.
+			</p>
+ 			<p>
+				What a great decision! With {{pronounPossessive}} new skills, {{form.playerName}} built a(n) {{form.adjective}} robot named {{form.obnoxiuousCelbertity}} that not only loved to {{form.dirtyTask}} but did it {{form.hugeNumber | number}} times faster.
+			</p>
+			<p>
+				<button ng-click="filledChange()">Play once again</button>
+			</p>
+		</section>
+	</div>
+	
+
+	<script src="js/angular.min.js"></script>
+	<script src="js/script.js"></script>
+	
+</body>
+</html>
