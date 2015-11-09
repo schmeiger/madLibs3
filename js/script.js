@@ -17,6 +17,14 @@ angular.module("madLibs", [])
 	$scope.pronoun = "he";
 	$scope.pronounPossessive = "his";
 
+    $scope.keypressed = function($event) {
+        var digit = parseInt(String.fromCharCode($event.keyCode),10);
+        if (isNaN(digit)) {
+            $event.preventDefault();
+            return;
+        }
+    }
+    
 	$scope.genderChange = function(){
 		if( $scope.gender == 'male'){
 			$scope.pronoun = "he";

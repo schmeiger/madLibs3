@@ -45,7 +45,7 @@
 					</div>
 					<div class="flexi-row">
 						<input type="text" ng-model="form.adjective" name="adjective" required ng-minlength="3" placeholder="adjective"><br/>
-						<input type="number" ng-model="form.hugeNumber" name="hugeNumber" required ng-minlength="3" ng-pattern="/[0-9]{3,}/" placeholder="huge Number"><br/>
+						<input type="number" ng-model="form.hugeNumber" name="hugeNumber" required ng-minlength="3" ng-pattern="/[0-9]{3,}/" placeholder="huge Number" ng-keypress="keypressed($event)"><br/>
 						<input type="text" ng-model="form.obnoxiuousCelbertity" name="obnoxiuousCelbertity" required ng-minlength="5" placeholder="obnoxious Celebrity">
 					</div>
 				</div>
