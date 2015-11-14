@@ -62,6 +62,10 @@ section {
 	border-bottom: 1px solid #ccc;
 	padding-top: 40px;
 	padding-bottom: 40px;
+	-webkit-transition:all linear 0.7s;
+  	-moz-transition:all linear 0.7s;
+  	-o-transition:all linear 0.7s;
+  	transition:all linear 0.7s;
 }
 
 .text {
@@ -75,4 +79,32 @@ section {
 .logo {
 	width: 70%;
 	text-align: center;
+}
+
+/*********************************************
+* Animation
+**********************************************/
+
+.inputs.ng-hide-add, .text.ng-hide-add {
+  -webkit-transition:all linear 0.7s;
+  -moz-transition:all linear 0.7s;
+  -o-transition:all linear 0.7s;
+  transition:all linear 0.7s;
+}
+
+.text.ng-hide-remove {
+  -webkit-transition:all linear 0.7s 0.7s;
+  -moz-transition:all linear 0.7s 0.7s;
+  -o-transition:all linear 0.7s 0.7s;
+  transition:all linear 0.7s 0.7s;
+}
+
+.inputs.ng-hide, .inputs.ng-hide-remove {
+  height: 0;
+  line-height: 0;
+  opacity: 0;
+}
+
+.text.ng-hide {
+  opacity: 0;
 }

@@ -1,4 +1,4 @@
-angular.module("madLibs", [])
+angular.module("madLibs", ['ngAnimate'])
 .controller("madLibsCtrl", function($scope){
 
 	$scope.form = {
@@ -18,11 +18,11 @@ angular.module("madLibs", [])
 	$scope.pronounPossessive = "his";
 
     $scope.keypressed = function($event) {
-        var digit = parseInt(String.fromCharCode($event.keyCode),10);
-        if (isNaN(digit)) {
-            $event.preventDefault();
-            return;
-        }
+        // var digit = parseInt(String.fromCharCode($event.keyCode),10);
+        // if (isNaN(digit)) {
+        //     $event.preventDefault();
+        //     return;
+        // }
     }
     
 	$scope.genderChange = function(){
